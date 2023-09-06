@@ -55,7 +55,6 @@ const run = async () => {
       const streamProvider = new ReStream(
         process.env.RESTREAM_SERVER || "",
         process.env.RESTREAM_KEY || ""
-        // "2954f6ed-17e9-4447-8912-61ac171abb07" // Testing
       );
       liveEvent.setStreamProvider(streamProvider);
     }
