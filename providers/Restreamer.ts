@@ -1,16 +1,12 @@
 import { StreamProvider, StreamStats } from "./interface";
 
-export class ReStream implements StreamProvider {
+export class Restreamer implements StreamProvider {
   private server: string;
   private streamKey: string;
 
   constructor(server: string, streamKey: string) {
     this.server = server;
     this.streamKey = streamKey;
-  }
-
-  getStreamUrl() {
-    return `${this.server}/memfs/${this.streamKey}.m3u8`;
   }
 
   async fetchStats() {

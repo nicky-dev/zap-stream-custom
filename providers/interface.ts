@@ -15,15 +15,15 @@ export interface StreamStats {
   /**
    *
    */
-  totalViewers?: number;
-
-  /**
-   *
-   */
   viewers: number;
 
   /**
    *
    */
   uptime: number;
+
+  /**
+   *
+   */
+  totalViewers?: number;
 }

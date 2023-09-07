@@ -6,18 +6,18 @@ import NDK, {
   NDKPrivateKeySigner,
 } from "@nostr-dev-kit/ndk";
 import { LiveEvent } from "./controllers/LiveEvent";
-import { ReStream } from "./providers/ReStream";
+import { Restreamer } from "./providers/Restreamer";
 
 if (!process.env.PRIVATE_KEY) {
   throw new Error("environment variable `PRIVATE_KEY` does not set");
 }
 
-if (!process.env.RESTREAM_SERVER) {
-  throw new Error("environment variable `RESTREAM_SERVER` does not set");
+if (!process.env.RESTREAMER_SERVER) {
+  throw new Error("environment variable `RESTREAMER_SERVER` does not set");
 }
 
-if (!process.env.RESTREAM_KEY) {
-  throw new Error("environment variable `RESTREAM_KEY` does not set");
+if (!process.env.RESTREAMER_KEY) {
+  throw new Error("environment variable `RESTREAMER_KEY` does not set");
 }
 
 const events: Record<string, LiveEvent> = {};
@@ -52,9 +52,9 @@ const run = async () => {
     if (!liveEvent) {
       liveEvent = new LiveEvent(ndk);
       events[streamId] = liveEvent;
-      const streamProvider = new ReStream(
-        process.env.RESTREAM_SERVER || "",
-        process.env.RESTREAM_KEY || ""
+      const streamProvider = new Restreamer(
+        process.env.RESTREAMER_SERVER || "",
+        process.env.RESTREAMER_KEY || ""
       );
       liveEvent.setStreamProvider(streamProvider);
     }
