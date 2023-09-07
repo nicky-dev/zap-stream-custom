@@ -57,6 +57,7 @@ export class LiveEvent {
           this.log("Update status ended");
           await ndkEvent.publish();
           this.stop();
+          this.uptimeCheckAttempts = 0;
           return;
         }
         this.uptimeCheckAttempts += 1;
